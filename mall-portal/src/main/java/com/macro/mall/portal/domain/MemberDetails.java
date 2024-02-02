@@ -9,11 +9,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * 会员详情封装
+ * SpringSecurity需要的用户信息封装类
  * Created by macro on 2018/8/3.
  */
 public class MemberDetails implements UserDetails {
-    private UmsMember umsMember;
+    private final UmsMember umsMember;
 
     public MemberDetails(UmsMember umsMember) {
         this.umsMember = umsMember;

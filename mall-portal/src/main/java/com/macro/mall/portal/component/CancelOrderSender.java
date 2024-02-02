@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * 取消订单消息的生产者
+ * 取消订单消息的发送者
  * Created by macro on 2018/9/14.
  */
 @Component
 public class CancelOrderSender {
-    private static Logger LOGGER =LoggerFactory.getLogger(CancelOrderSender.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CancelOrderSender.class);
     @Autowired
     private AmqpTemplate amqpTemplate;
 

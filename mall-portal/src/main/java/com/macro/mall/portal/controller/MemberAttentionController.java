@@ -3,23 +3,22 @@ package com.macro.mall.portal.controller;
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.portal.domain.MemberBrandAttention;
-import com.macro.mall.portal.domain.MemberProductCollection;
 import com.macro.mall.portal.service.MemberAttentionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * 会员关注品牌管理Controller
  * Created by macro on 2018/8/2.
  */
 @Controller
-@Api(tags = "MemberAttentionController", description = "会员关注品牌管理")
+@Api(tags = "MemberAttentionController")
+@Tag(name = "MemberAttentionController",description = "会员关注品牌管理")
 @RequestMapping("/member/attention")
 public class MemberAttentionController {
     @Autowired
@@ -48,7 +47,7 @@ public class MemberAttentionController {
         }
     }
 
-    @ApiOperation("显示当前用户品牌关注列表")
+    @ApiOperation("分页查询当前用户品牌关注列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberBrandAttention>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -57,7 +56,7 @@ public class MemberAttentionController {
         return CommonResult.success(CommonPage.restPage(page));
     }
 
-    @ApiOperation("显示品牌关注详情")
+    @ApiOperation("根据品牌ID获取品牌关注详情")
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<MemberBrandAttention> detail(@RequestParam Long brandId) {
